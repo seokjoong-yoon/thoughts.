@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>thoughts.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/white-text.png" alt="failed to load img">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <% if(authenticated===true) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/validation">Compose</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Collections
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- Sample -->
+                            <% for(var i=0; i<collections.length; i++) { %>
+                                <a class="dropdown-item" href="/home/<%=collections[i]._id%>"><%= collections[i].name %></a>
+                            <% } %>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/collectionValidation">Create New Collection</a>
+                        </div>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Login/Register</a>
+                        </li>
+                    <% } %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<body>
+    
+<div class="about-main">
+    <div class="container">
+        <img class="about-favicon" src="/images/black-favicon.png" alt="">
+        <img class="about-square" src="/images/black-square-text.png" alt="">
+        <img class="about-text" src="/images/black-text.png" alt="">
+        <br>
+        <br>
+        <br>
+        <p class="yellow"><strong>Programmed By:</strong></p>
+        <h2>Yoon Seokjoong,</h2>
+        <p>Backend, Frontend, Design</p>
+        <p>Tue Feb 18, 2020 ~</p>
+        <p><strong>Contact: seokjoong57@gmail.com</strong></p>
+        <br>
+        <p class="yellow"><strong>Powered By:</strong></p>
+        <p>Node.js, Express.js, EJS</p>
+        <p>MongoDB, Mongoose</p>
+        <p>Passport.js</p>
+        <p>Heroku</p>
+        <p>Github</p>
+        <br>
+        <p class="yellow"><strong>Server Running On:</strong></p>
+        <p>N.Virginia, United States</p>
+    </div>
+</div>
+</body>
+
+<footer>
+        <p>Copyright 2020. Seokjoong-Yoon. All rights reserved.</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</html>

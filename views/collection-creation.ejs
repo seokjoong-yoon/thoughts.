@@ -1,0 +1,22 @@
+<%- include("header"); -%>
+<% if(collectionValidation === true) { %>
+    <div class="container">
+        <h3 class="home-collection-name">Create New Collection</h3>
+        <form action="/collectionCreation" method="post">
+            <div class="form-group">
+                    <label for="collection-name">Collection Name:</label>
+                    <input type="text" class="form-control" id="collection-name" name="name">
+            </div>
+            <div class="form-group">
+                    <label for="collection-description">Description:</label>
+                    <input type="text" class="form-control" id="collection-description" name="description">
+            </div>
+            <button type="submit" class="btn btn-dark">Create</button>
+        </form>
+    </div>
+<% } else { %>
+    <div class="container">
+        <h3 class="home-collection-name">Validation Required!</h3>
+    </div>
+<% } %>
+<%- include("footer"); -%>

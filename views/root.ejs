@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="root">
+<head>
+    <meta charset="UTF-8">
+    <title>thoughts.</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<div class="root-main">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/images/white-text.png" alt="failed to load img">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <% if(authenticated===true) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/feed">Feed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/validation">Compose</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Collections
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <!-- Sample -->
+                            <% if(collections.length === 0) { %>
+                                <a class="dropdown-item" href="#">No collections yet.</a>
+                            <% } else { %>
+                                <% for(var i=0; i<collections.length; i++) { %>
+                                    <a class="dropdown-item" href="/home/<%=collections[i]._id%>"><%= collections[i].name %></a>
+                                <% } %>
+                            <% } %>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/collectionValidation">Create New Collection</a>
+                        </div>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Login/Register</a>
+                        </li>
+                    <% } %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<body>
+
+    
+            <% if(authenticated===false) { %>
+            <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <img class="root-logo" src="/images/black-favicon.png" alt="" srcset="">
+                            <br>
+                            <br>
+                            
+                            
+                            <div class="typing-txt"> 
+                                <ul>
+                                    <li style="font-size:100px;">Publish Your Thoughts,</li>
+                                    <li class="root-type">Get Recognized.</li>
+                                </ul>
+                                
+                                </div> 
+                                <div class="typing">
+                                    <ul>
+                                    <li style="font-size:50px;"></li>
+                                    <li style="font-size:50px;"></li>
+                                </ul>
+                                </div> 
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-lg-4">
+                            <br>
+                            <br>
+                            <br>
+                            <h3>Login</h3>
+                            <br>
+                            <form action="/login" method="post">
+                                <div class="form-group">
+                                    <input class="form-control login-email" type="email" name="email" id="" placeholder="Email">
+                                    <input class="form-control login-password" type="password" name="password" id="" placeholder="Password">
+                                    
+                                    <br>
+                                    <button class="btn btn-dark" type="submit">Login</button>
+                                </div>
+                            </form>
+                            <br>
+                            <hr>
+                            <h3>Register</h3>
+                            <br>
+                            <form action="/register" method="post">
+                                <div class="form-group">
+                                    <input class="form-control register-email" type="email" name="email" id="" placeholder="Email">
+                                    <input class="form-control register-password" type="password" name="password" id="" placeholder="Password">
+                                    <input class="form-control register-username" type="text" name="username" placeholder="User Name">
+                                    <br>
+                                    <button class="btn btn-dark" type="submit">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } else if (authenticated==="loginFailed") { %>
+                <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                    <strong>Password Incorrect!</strong> You should check the password once more.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class=container>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <img class="root-logo" src="/images/black-favicon.png" alt="" srcset="">
+                            <br>
+                            <br>
+                            
+                            
+                            <div class="typing-txt"> 
+                                <ul>
+                                    <li style="font-size:100px;">Publish Your Thoughts,</li>
+                                    <li class="root-type">Get Recognized.</li>
+                                </ul>
+                                    
+                                </div> 
+                                <div class="typing">
+                                    <ul>
+                                    <li style="font-size:50px;"></li>
+                                    <li style="font-size:50px;"></li>
+                                </ul>
+                                </div> 
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-lg-4">
+                            <br>
+                            <br>
+                            <br>
+                            <h3>Login</h3>
+                            <br>
+                            <form action="/login" method="post">
+                                <div class="form-group">
+                                    <input class="form-control login-email" type="email" name="email" id="" placeholder="Email">
+                                    <input class="form-control login-password" type="password" name="password" id="" placeholder="Password">
+                                    
+                                    <br>
+                                    <button class="btn btn-dark" type="submit">Login</button>
+                                </div>
+                            </form>
+                            <br>
+                            <hr>
+                            <h3>Register</h3>
+                            <br>
+                            <form action="/register" method="post">
+                                <div class="form-group">
+                                    <input class="form-control register-email" type="email" name="email" id="" placeholder="Email">
+                                    <input class="form-control register-password" type="password" name="password" id="" placeholder="Password">
+                                    <input class="form-control register-username" type="text" name="username" placeholder="User Name">
+                                    <br>
+                                    <button class="btn btn-dark" type="submit">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <h4>Welcome,</h4>
+                            <h1><%= username %>!</h1>
+                            <br>
+                            <h6>Your collections are on the right side.</h6>
+                            <br>
+                            <form action="/logout" method="post">
+                                <button class="btn btn-dark" type="submit">Logout</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-6" style="text-align: center">
+                            <br>
+                            <br>
+                            <br>
+                            <h3>Collections:</h3>
+                            <br>
+                            <div class="root-collection-container">
+                                <br>
+                                <br>
+                                <% if(collections.length === 0) { %>
+                                    <h1 class="root-collections root-collections-link">No collections yet</h1>
+                                    <br>
+                                <% } else { %>
+                                    <% for(var i=0; i<collections.length; i++) { %>
+                                        <h1 class="root-collections"><a class="root-collections-link" href="/home/<%=collections[i]._id%>"><%= collections[i].name %></a></h1>
+                                        <br>
+                                    <% } %>
+                                <% } %>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+
+    
+
+    <div class="footer-adjustment"></div>
+</div>
+</body>
+
+<footer>
+        <p>Copyright 2020 Seokjoong-Yoon, Seoul | <a href="/about">Click here for more info</a></p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="/js/thoughts.js"></script>
+/html>

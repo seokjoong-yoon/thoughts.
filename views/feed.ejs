@@ -1,0 +1,39 @@
+<%- include("header"); -%>
+
+    <div class="container">
+        
+        <h2 class="home-collection-name">Feed - Recent 10 Documents</h2>
+
+        <div class="document-detail-description"></div>
+    
+        <% if(documents.length === 0) {%>
+            <br>
+            <br>
+            <br>
+            <h4>No Documents in Feed Yet!</h4>
+            <h6>Populate new one down here:</h6>
+            <br>
+            <form action="/validation" method="get">
+                <button class="btn btn-dark" type="submit">compose</button>
+            </form>
+        <% } else { %>
+            <br>
+            <br>
+            <% for(var i=documents.length-1; i>=documents.length-10; i--) { %>
+                <h4><%= documents[i].title %></h4>
+                <p><em>by <%= documents[i].author.toUpperCase() %></em>, supported <%= documents[i].likeCount %></p>
+                <p><%= documents[i].content %></p>
+                <p><em><%= documents[i].timestamp %></em>
+                    <% if(documents[i].likedUsers.toString().includes(currentUser.toString())) { %>
+                        | <span class="supported">Supported!</span>
+                    <% } else { %>
+                        | <a class="support" href="/addSupport/<%= documents[i]._id%>">Support</a>
+                    <% } %>
+                </p>
+                <br>
+                <br>
+            <% } %>
+        <% } %>
+    </div>
+
+<%- include("footer"); -%>

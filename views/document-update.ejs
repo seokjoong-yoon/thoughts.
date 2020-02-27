@@ -1,0 +1,29 @@
+<%- include("header"); -%>
+    <div class="container">
+        <h3 class="home-collection-name">Edit Document</h3>
+        <form action="/updateDocument/<%= document._id %>/returnTo/<%= document.collectionInfo._id %>" method="post">
+            <div class="form-group">
+                <label for="collection-select">Select Collection</label>
+                <select class="form-control" name="updatedCollectionName" id="collection-select">
+                    <!-- Example -->
+                    <% for(var i=0; i<collections.length; i++) { %>
+                        <% if(document.collectionInfo.name === collections[i].name) { %>
+                            <option selected="selected"><%= collections[i].name %></option>
+                        <% } else { %>
+                            <option><%= collections[i].name %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                    <label for="compose-title">Title:</label>
+                    <input class="form-control" id="compose-title" name="updatedTitle" value="<%= document.title %>">
+                </div>
+            <div class="form-group">
+                <label for="compose-content">Content:</label>
+                <textarea class="form-control" id="compose-content" rows="20" name="updatedContent"><%= document.content %></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">edit</button>
+        </form>
+    </div>
+<%- include("footer"); -%>

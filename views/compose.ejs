@@ -1,0 +1,31 @@
+<%- include("header"); -%>
+<% if(composeValidation === true) { %>
+    <div class="container">
+        <h3 class="home-collection-name">Compose New Document</h3>
+        <form action="/compose" method="post">
+            <div class="form-group">
+                <label for="collection-select">Select Collection</label>
+                <select class="form-control" name="collectionName" id="collection-select">
+                    <!-- Example -->
+                    <% for(var i=0; i<collections.length; i++) { %>
+                        <option><%= collections[i].name %></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                    <label for="compose-title">Title:</label>
+                    <input class="form-control" id="compose-title" name="composedTitle">
+                </div>
+            <div class="form-group">
+                <label for="compose-content">Content:</label>
+                <textarea class="form-control" id="compose-content" rows="20" name="composedContent"></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark">Compose</button>
+        </form>
+    </div>
+<% } else { %>
+    <div class="container">
+        <h3 class="home-collection-name">Validation Required!</h3>
+    </div>
+<% } %>
+<%- include("footer"); -%>

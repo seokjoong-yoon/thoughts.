@@ -1,0 +1,23 @@
+<%- include("header"); -%>
+<% if(validationFail===true) {%>
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        <strong>Password Incorrect!</strong> You should check the password once more.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% } %>
+    <div class="container">
+        <h3 class="home-collection-name">Validation is Required to Compose New Document!</h3>
+        <p class="validation-p">Checking User Password Again...</p>
+        <img id="loading" src="images/loading.png" alt="">
+        <form id="validation-form" action="/validation" method="post">
+            <div class="form-group">
+                <label for="validation-password">Password</label>
+                <input type="password" name="password" class="form-control" id="validation-password">
+            </div>
+            <button type="submit" class="btn btn-dark">Confirm</button>
+        </form>
+    </div>
+    
+<%- include("footer"); -%>

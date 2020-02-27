@@ -1,0 +1,23 @@
+<%- include("header"); -%>
+
+    <div class="container">
+        <br>
+        <br>
+        <h2 class="home-collection-name"><%= document.title %></h2>
+        <div class="document-detail-description">
+            <p style="position:absolute;"><strong><%= document.userInfo.username %></strong> | <em><%= document.timestamp %></em></p>
+            <div class="document-detail-btns">
+                <a href="/deleteDocument/<%= document._id %>/returnTo/<%= document.collectionInfo._id%>">delete</a>
+                <a href="/updateDocument/<%= document._id %>/returnTo/<%= document.collectionInfo._id%>">edit</a>
+            </div>
+            
+        </div>
+        
+        
+        <br>
+        <br>
+        <p><%= document.content %></p>
+
+    </div>
+
+<%- include("footer"); -%>

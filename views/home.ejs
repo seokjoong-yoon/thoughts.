@@ -1,0 +1,37 @@
+<%- include("header"); -%>
+
+    <div class="container">
+        
+        <h2 class="home-collection-name"><span><img class="home-favicon" src="/images/black-favicon.png" alt=""><%= collectionName %></span></h2>
+
+        <div class="document-detail-description">
+            <p style="position: absolute"><strong><%= collectionAuthor %></strong><span>  |  </span><em><%= collectionDescription%></em></p>
+            <div class="document-detail-btns">
+                <a href="/deleteCollection/<%= collectionId %>">delete</a>
+                <a href="/updateCollection/<%= collectionId %>">edit</a>
+            </div>
+        </div>
+    
+        <% if(documents.length === 0) {%>
+            <br>
+            <br>
+            <br>
+            <h4>No Documents Yet!</h4>
+            <h6>Create new one down here:</h6>
+            <br>
+            <form action="/validation" method="get">
+                <button class="btn btn-dark" type="submit">compose</button>
+            </form>
+        <% } else { %>
+            <br>
+            <br>
+            <% for(var i=0; i<documents.length; i++) { %>
+                <h4><%= documents[i].title %></h4>
+                <p><%= documents[i].content.substring(0, 500) %> <span><a class="show-detail" href="/documentDetail/<%= documents[i]._id%>">...more</a></span></p>
+                <p><em><%= documents[i].timestamp %></em> | Supported <%= documents[i].likeCount %></p>
+                <br>
+            <% } %>
+        <% } %>
+    </div>
+
+<%- include("footer"); -%>

@@ -1,0 +1,16 @@
+<%- include("header"); -%>
+    <div class="container">
+        <h3 class="home-collection-name">Edit Collection</h3>
+        <form action="/updateCollection/<%= collection._id%>" method="post">
+            <div class="form-group">
+                    <label for="collection-name">Collection Name:</label>
+                    <input type="text" class="form-control" id="collection-name" name="updatedName" value="<%= collection.name %>">
+            </div>
+            <div class="form-group">
+                    <label for="collection-description">Description:</label>
+                    <input type="text" class="form-control" id="collection-description" name="updatedDescription" value="<%= collection.description%>">
+            </div>
+            <button type="submit" class="btn btn-dark">edit</button>
+        </form>
+    </div>
+<%- include("footer"); -%>
