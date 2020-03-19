@@ -16,7 +16,9 @@
         
         <br>
         <br>
-        <p><%= document.content %></p>
+        <% document.content.split("\r\n").forEach(function(line){ %>
+            <p><%= line %></p>
+        <% }); %>
 
     </div>
 

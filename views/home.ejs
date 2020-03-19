@@ -25,7 +25,7 @@
         <% } else { %>
             <br>
             <br>
-            <% for(var i=0; i<documents.length; i++) { %>
+            <% for(var i=documents.length-1; i>=0; i--) { %>
                 <h4><%= documents[i].title %></h4>
                 <p><%= documents[i].content.substring(0, 500) %> <span><a class="show-detail" href="/documentDetail/<%= documents[i]._id%>">...more</a></span></p>
                 <p><em><%= documents[i].timestamp %></em> | Supported <%= documents[i].likeCount %></p>

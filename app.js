@@ -26,6 +26,7 @@ app.use(passport.session());
 
 // MongoDB - Database Logics
 mongoose.connect("mongodb+srv://admin-yoon:seokjoong8966@cluster-thoughts-urhdc.mongodb.net/thoughtsDB", {useUnifiedTopology:true});
+// mongoose.connect("mongodb://localhost:27017/thoughtsDB");
 mongoose.set('useCreateIndex', true);
 
 const userSchema = new mongoose.Schema({
@@ -64,7 +65,8 @@ const documentSchema = new mongoose.Schema({
     likeCount: Number,
     collectionInfo: collectionSchema,
     userInfo: userSchema,
-    likedUsers: [userSchema]
+    likedUsers: [userSchema],
+    range: String
 });
 
 const Document = new mongoose.model("Document", documentSchema);
@@ -247,6 +249,7 @@ app.get("/compose", function(req, res){
 
 app.post("/compose", function(req, res){
     const collectionName = req.body.collectionName;
+    const composedRange = req.body.composedRange;
     const composedTitle = req.body.composedTitle;
     const composedContent = req.body.composedContent;
 
@@ -260,7 +263,8 @@ app.post("/compose", function(req, res){
                 author: foundUser.username,
                 likeCount: 0,
                 collectionInfo: collection,
-                userInfo: foundUser
+                userInfo: foundUser,
+                range: composedRange
             })
             newDocument.save();
             res.redirect("/home/"+collection._id);
@@ -337,7 +341,8 @@ app.post("/updateDocument/:documentId/returnTo/:collectionId", function(req, res
                 title: req.body.updatedTitle,
                 content: req.body.updatedContent,
                 collectionInfo: collection,
-                timestamp: date.getDate()
+                timestamp: date.getDate(),
+                range: req.body.updatedRange
             }, function(err){
                 if(err){
                     console.log(err);
@@ -421,3 +426,8 @@ app.get("/about", function(req, res){
 app.listen(process.env.PORT || 3000, function() {
     console.log("Server has started!");
 });
+
+// app.listen(3000, function() {
+//     console.log("Server has started!");
+// });
+
